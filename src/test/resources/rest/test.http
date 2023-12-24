@@ -1,0 +1,92 @@
+
+###
+GET http://localhost:8080/user/checkExistsPhone?phone=8-999-999-33-34
+Accept: application/json
+
+###
+GET http://localhost:8080/user/checkExistsEmail?email=ivanov@mail.ru
+Accept: application/json
+
+###
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "email": "ivanov@mail.ru",
+  "phone": "8-999-999-11-11",
+  "surname": "Иванов",
+  "firstname": "Иван",
+  "patronymic": "Иванович",
+  "gender": "MALE",
+  "birthDate": "1990-01-01T00:00:00",
+  "city": "Москва",
+  "avatarLink": null,
+  "info": "Я люблю свою работу, я приду сюда в субботу",
+  "hardSkills": "java, sql"
+}
+
+###
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "email": "petrov@mail.ru",
+  "phone": "8-999-999-22-22",
+  "surname": "Петров",
+  "firstname": "Петр",
+  "gender": "MALE",
+  "birthDate": "1990-02-02T00:00:00",
+  "city": "Казань",
+  "info": "Или даже в воскресенье",
+  "hardSkills": "java, sql"
+}
+
+###
+GET http://localhost:8080/user/1
+Accept: application/json
+
+###
+GET http://localhost:8080/user/2
+Accept: application/json
+
+###
+PUT http://localhost:8080/user/1
+Content-Type: application/json
+
+{
+  "email": "ivanov@mail.ru",
+  "phone": "8-999-999-33-33",
+  "surname": "Иванов",
+  "firstname": "Иван",
+  "patronymic": "Иванович",
+  "gender": "MALE",
+  "birthDate": "1990-01-01T00:00:00",
+  "city": "Москва",
+  "avatarLink": null,
+  "info": "Я люблю свою работу, я приду сюда в субботу",
+  "hardSkills": "java, sql"
+}
+
+###
+DELETE http://localhost:8080/user/1
+Content-Type: application/json
+
+###
+GET http://localhost:8080/user/1/subscribers
+Content-Type: application/json
+
+###
+GET http://localhost:8080/user/1/subscription
+Content-Type: application/json
+
+###
+POST http://localhost:8080/user/1/subscribe/2
+Content-Type: application/json
+
+###
+POST http://localhost:8080/user/1/unsubscribe/2
+Content-Type: application/json
+
+###
+GET http://localhost:8080/users?page=0&size=10&sort=id&sort=phone&surname=Иванов
+Content-Type: application/json

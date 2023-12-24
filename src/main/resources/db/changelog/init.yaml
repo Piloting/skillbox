@@ -1,0 +1,153 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: suntsovto
+      changes:
+        - createSequence:
+            sequenceName: sn_subscription_seq
+            startValue: 1
+            incrementBy: 50
+  - changeSet:
+      id: 2
+      author: suntsovto
+      changes:
+        - createSequence:
+            sequenceName: sn_user_seq
+            startValue: 1
+            incrementBy: 50
+  - changeSet:
+      id: 3
+      author: suntsovto
+      changes:
+        - createTable:
+            tableName: sn_user
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_sn_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_state
+                  type: SMALLINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: DATETIME
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: VARCHAR(255)
+              - column:
+                  name: gender
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birth_date
+                  type: DATETIME
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: avatar_link
+                  type: VARCHAR(255)
+              - column:
+                  name: info
+                  type: VARCHAR(2000)
+              - column:
+                  name: hard_skills
+                  type: VARCHAR(2000)
+        - createIndex: 
+            tableName: sn_user
+            indexName: idx_sn_user_fio
+            columns:
+              - column:
+                  name: surname
+              - column: 
+                  name: firstname
+  - changeSet:
+      id: 4
+      author: suntsovto
+      changes:
+        - createTable:
+            tableName: sn_subscription
+            columns:
+              - column:
+                  constraints:
+                    primaryKeyName: pk_sn_subscription
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: owner_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: subscriber_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: subscribe_state
+                  type: SMALLINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: DATETIME
+        - addForeignKeyConstraint:
+            baseTableName: sn_subscription
+            baseColumnNames: owner_id
+            constraintName: fk_sn_subscription_on_owner
+            referencedColumnNames: id
+            referencedTableName: sn_user
+        - addForeignKeyConstraint:
+            baseTableName: sn_subscription
+            baseColumnNames: subscriber_id
+            constraintName: fk_sn_subscription_on_subscriber
+            referencedColumnNames: id
+            referencedTableName: sn_user
+        - createIndex:
+            tableName: sn_subscription
+            indexName: idx_sn_subscription_own2sub_uniq
+            unique: true
+            columns:
+              - column:
+                  name: owner_id
+              - column:
+                  name: subscriber_id
+        - createIndex:
+            tableName: sn_subscription
+            indexName: idx_sn_subscription_sub
+            unique: true
+            columns:
+              - column:
+                  name: subscriber_id
+
