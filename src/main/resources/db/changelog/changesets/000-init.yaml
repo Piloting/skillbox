@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
+      id: 000-1
       author: suntsovto
       changes:
         - createSequence:
@@ -8,7 +8,7 @@ databaseChangeLog:
             startValue: 1
             incrementBy: 50
   - changeSet:
-      id: 2
+      id: 000-2
       author: suntsovto
       changes:
         - createSequence:
@@ -16,7 +16,7 @@ databaseChangeLog:
             startValue: 1
             incrementBy: 50
   - changeSet:
-      id: 3
+      id: 000-3
       author: suntsovto
       changes:
         - createTable:
@@ -82,6 +82,10 @@ databaseChangeLog:
               - column:
                   name: hard_skills
                   type: VARCHAR(2000)
+  - changeSet:
+      id: 000-4
+      author: suntsovto
+      changes:
         - createIndex: 
             tableName: sn_user
             indexName: idx_sn_user_fio
@@ -91,7 +95,7 @@ databaseChangeLog:
               - column: 
                   name: firstname
   - changeSet:
-      id: 4
+      id: 000-5
       author: suntsovto
       changes:
         - createTable:
@@ -122,18 +126,30 @@ databaseChangeLog:
               - column:
                   name: create_date
                   type: DATETIME
+  - changeSet:
+      id: 000-6
+      author: suntsovto
+      changes:
         - addForeignKeyConstraint:
             baseTableName: sn_subscription
             baseColumnNames: owner_id
             constraintName: fk_sn_subscription_on_owner
             referencedColumnNames: id
             referencedTableName: sn_user
+  - changeSet:
+      id: 000-7
+      author: suntsovto
+      changes:
         - addForeignKeyConstraint:
             baseTableName: sn_subscription
             baseColumnNames: subscriber_id
             constraintName: fk_sn_subscription_on_subscriber
             referencedColumnNames: id
             referencedTableName: sn_user
+  - changeSet:
+      id: 000-8
+      author: suntsovto
+      changes:
         - createIndex:
             tableName: sn_subscription
             indexName: idx_sn_subscription_own2sub_uniq
@@ -143,6 +159,10 @@ databaseChangeLog:
                   name: owner_id
               - column:
                   name: subscriber_id
+  - changeSet:
+      id: 000-9
+      author: suntsovto
+      changes:
         - createIndex:
             tableName: sn_subscription
             indexName: idx_sn_subscription_sub
@@ -150,4 +170,3 @@ databaseChangeLog:
             columns:
               - column:
                   name: subscriber_id
-
