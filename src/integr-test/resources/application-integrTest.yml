@@ -1,0 +1,15 @@
+logging:
+  level:
+    org.springfaramework: DEBUG
+    org.springfaramework.orm.jpa.JpaTransactionManager: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.desriptor.sql.BasicBinder: TRACE
+spring:
+  datasource:
+    url: ${POSTGRES_DB:}
+    username: ${POSTGRES_USER:}
+    password: ${POSTGRES_PASSWORD:}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
