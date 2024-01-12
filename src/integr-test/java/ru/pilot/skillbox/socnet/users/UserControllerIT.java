@@ -4,13 +4,11 @@ package ru.pilot.skillbox.socnet.users;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.context.ApplicationContext;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -40,9 +38,6 @@ public class UserControllerIT {
 
     @Autowired
     protected MockMvc mockMvc;
-
-    @Autowired
-    protected TestRestTemplate restTemplate;
 
     @Autowired
     protected ObjectMapper objectMapper;
