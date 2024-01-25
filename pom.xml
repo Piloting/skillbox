@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ru.pilot.skillbox.socnet</groupId>
 	<artifactId>users</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>users</name>
 	<description>users social network</description>
 	<properties>
@@ -88,12 +88,10 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-<!--			<scope>runtime</scope>-->
 		</dependency>
 	</dependencies>
 

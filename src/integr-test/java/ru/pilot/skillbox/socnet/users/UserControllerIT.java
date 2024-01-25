@@ -35,6 +35,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("integTest")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerIT {
+    
+    private static Integer idx = 0;
 
     @Autowired
     protected MockMvc mockMvc;
@@ -50,6 +52,7 @@ public class UserControllerIT {
         registry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
         registry.add("spring.datasource.username", postgresContainer::getUsername);
         registry.add("spring.datasource.password", postgresContainer::getPassword);
+        registry.add("spring.datasource.driverClassName", () -> "org.postgresql.Driver");
     }
 
     @Test
@@ -151,8 +154,10 @@ public class UserControllerIT {
 
     private static RegistrationInfo createRegistrationInfoDto() {
         RegistrationInfo r = new RegistrationInfo();
-        r.setEmail("Email@mail.ru");
-        r.setPhone("9-999-999-99-99");
+        
+        r.setEmail("Email" + idx + "@mail.ru");
+        r.setPhone("9-999-999-99-" + idx);
+        idx++;
         r.setSurname("Surname");
         r.setFirstname("Firstname");
         r.setPatronymic("Patronymic");

@@ -1,14 +1,14 @@
 spring:
-  #datasource:
-  #  url: jdbc:h2:mem:mydb
-  #  username: sa
-  #  password: password
-  #  driverClassName: org.h2.Driver
   datasource:
-    url: ${POSTGRES_DB:jdbc:postgresql://postgres_container:5432/user-db} 
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:postgres}
-    driverClassName: org.postgresql.Driver 
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  #datasource:
+  #  url: ${DB_URL:jdbc:postgresql://postgres_container:5432/user-db} 
+  #  username: ${DB_USER:postgres}
+  #  password: ${DB_PASSWORD:postgres}
+#    driverClassName: org.postgresql.Driver 
 logging:
   level:
     ru.pilot: debug

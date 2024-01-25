@@ -1,0 +1,9 @@
+namespace: &namespace test
+appHost: test.user-app.local
+
+apps:
+  backend:
+    namespace: *namespace
+    replicasCount: 2
+    container:
+      version: "0.1.0"

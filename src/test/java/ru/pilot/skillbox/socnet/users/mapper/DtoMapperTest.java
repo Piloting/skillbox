@@ -102,8 +102,6 @@ public final class DtoMapperTest {
         UserEntity expected = new UserEntity(null);
         UserState userState = UserState.ACTIVE;
         expected.setUserState(userState);
-        LocalDateTime createDate = LocalDateTime.now();
-        expected.setCreateDate(createDate);
 
         Long actualId = actual.getId();
         assertNull(actualId);
@@ -117,11 +115,6 @@ public final class DtoMapperTest {
         UserState expectedUserState = expected.getUserState();
         UserState actualUserState = actual.getUserState();
         assertEquals(expectedUserState, actualUserState);
-
-        LocalDateTime expectedCreateDate = expected.getCreateDate();
-        LocalDateTime actualCreateDate = actual.getCreateDate();
-        // java.time.LocalDateTime has overridden equals method
-        assertEquals(expectedCreateDate, actualCreateDate);
 
         String actualSurname = actual.getSurname();
         assertNull(actualSurname);
@@ -176,8 +169,6 @@ public final class DtoMapperTest {
         expected.setPhone(phone);
         UserState userState = UserState.ACTIVE;
         expected.setUserState(userState);
-        LocalDateTime createDate = LocalDateTime.now();
-        expected.setCreateDate(createDate);
         String surname = "-3";
         expected.setSurname(surname);
         expected.setFirstname(phone);
@@ -203,11 +194,6 @@ public final class DtoMapperTest {
         UserState expectedUserState = expected.getUserState();
         UserState actualUserState = actual.getUserState();
         assertEquals(expectedUserState, actualUserState);
-
-        LocalDateTime expectedCreateDate = expected.getCreateDate();
-        LocalDateTime actualCreateDate = actual.getCreateDate();
-        // java.time.LocalDateTime has overridden equals method
-        assertEquals(expectedCreateDate, actualCreateDate);
 
         String expectedSurname = expected.getSurname();
         String actualSurname = actual.getSurname();

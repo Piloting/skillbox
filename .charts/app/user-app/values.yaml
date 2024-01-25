@@ -1,0 +1,36 @@
+appName: user-app
+appHost: user-app.local
+namespace: &namespace default
+DB_URL: jdbc:h2:mem:mydb
+DB_USER: sa
+DB_PASSWORD: password
+
+apps:
+  backend:
+    appName: user-app
+    namespace: *namespace
+    replicasCount: 1
+    container:
+      image: pilot_repo/user-app
+      version: "0.1.0"
+      port: 8080
+      env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_URL
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_PASSWORD
+    service:
+      type: NodePort
+      port: 80
+      targetPort: 8080
