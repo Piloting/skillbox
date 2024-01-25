@@ -4,6 +4,6 @@ appHost: dev.user-app.local
 apps:
   backend:
     namespace: *namespace
-    replicasCount: 2
+    replicasCount: 1
     container:
       version: "0.1.0"
