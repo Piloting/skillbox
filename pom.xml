@@ -14,7 +14,7 @@
 	<name>users</name>
 	<description>users social network</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -96,16 +96,6 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.11.0</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
