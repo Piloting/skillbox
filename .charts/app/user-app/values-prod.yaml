@@ -1,0 +1,9 @@
+namespace: &namespace prod
+appHost: user-app
+
+apps:
+  backend:
+    namespace: *namespace
+    replicasCount: 5
+    container:
+      version: "0.1.0"
