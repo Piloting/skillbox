@@ -10,7 +10,13 @@
 # Удалить чарт: helm delete user-app
 
 # деплой в разные нэймспейсы
+# DEV
 # создать нэймспейсы: kubectl create namespace dev
 # установка: helm install user-app-dev . -f values-dev.yaml
+# добавить в etc/hosts 127.0.0.1 dev.user-app.local
+# http://dev.user-app.local/swagger-ui/index.html
+# TEST
 # создать нэймспейсы: kubectl create namespace test
 # установка: helm install user-app-test . -f values-test.yaml
+# добавить в etc/hosts 127.0.0.1 test.user-app.local
+# http://test.user-app.local/swagger-ui/index.html
