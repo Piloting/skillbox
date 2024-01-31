@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import ru.pilot.skillbox.socnet.users.exception.dto.ValidationErrorResponse;
 import ru.pilot.skillbox.socnet.users.exception.dto.Violation;
 
 @Getter

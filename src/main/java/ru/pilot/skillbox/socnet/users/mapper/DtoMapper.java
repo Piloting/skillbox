@@ -12,7 +12,11 @@ import ru.pilot.skillbox.socnet.users.entity.UserState;
  * Конвертация дто
  * Подключить Mapstruct, если будет много
  */
-public class DtoMapper {
+public final class DtoMapper {
+    private DtoMapper(){
+        
+    }
+    
     public static UserEntity registrationToEntity(RegistrationInfo registrationInfo){
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(registrationInfo.getEmail());

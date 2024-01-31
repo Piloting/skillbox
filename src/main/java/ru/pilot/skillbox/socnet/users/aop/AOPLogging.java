@@ -1,7 +1,6 @@
 package ru.pilot.skillbox.socnet.users.aop;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
