@@ -24,6 +24,8 @@ cache:
 build_app:
   # Привязываем шаг к определённому этапу:
   stage: build
+  tags:
+    - java
   # Указываем образ, который будет использоваться для выполнения шага:
   image: maven:3-openjdk-$JAVA_VERSION
   # В разделе скрипта задаём команду, которую хотим выполнить:
@@ -31,6 +33,8 @@ build_app:
 
 build_artifact:
   stage: build_image
+  tags:
+    - java
   # Для сборки образа будем использовать механизм docker in docker:
   image: docker:latest
   # Во внутреннем блоке variables можно задавать локальные переменные шага:
