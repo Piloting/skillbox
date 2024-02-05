@@ -38,8 +38,8 @@ build_artifact:
   # Для сборки образа будем использовать механизм docker in docker:
   image: docker:latest
   # Во внутреннем блоке variables можно задавать локальные переменные шага:
-  #variables:
-  #  DOCKER_TLS_CERTDIR: /certs
+  variables:
+    DOCKER_TLS_CERTDIR: /certs
   # Раздел services позволяет добавить к сборке ещё несколько образов.
   # Например, для docker in docker нам нужен образ с демоном. 
   # Другой пример: можно добавить БД для интеграционных тестов в отдельном образе.
