@@ -56,4 +56,5 @@ build_artifact:
   # В этой форме каждая команда записывается в отдельный элемент списка, что повышает читаемость файла:
   script:
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker push $APP_IMAGE:$APP_TAG
