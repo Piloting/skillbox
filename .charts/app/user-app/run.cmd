@@ -20,3 +20,8 @@
 # установка: helm install user-app-test . -f values-test.yaml
 # добавить в etc/hosts 127.0.0.1 test.user-app.local
 # http://test.user-app.local/swagger-ui/index.html
+# PREPROD
+# создать нэймспейсы: kubectl create namespace preprod
+# установка: helm install user-app-preprod . -f values-preprod.yaml
+# добавить в etc/hosts 127.0.0.1 preprod.user-app.local
+# http://preprod.user-app.local/swagger-ui/index.html

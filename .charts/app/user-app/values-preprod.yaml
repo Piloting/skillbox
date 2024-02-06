@@ -1,0 +1,27 @@
+namespace: &namespace preprod
+appHost: user-app
+DB_URL: jdbc:postgresql://my_postgres_container:5432/postgres
+DB_USER: postgres
+DB_PASSWORD: postgres
+
+apps:
+  backend:
+    namespace: *namespace
+    replicasCount: 2
+    container:
+      env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_URL
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: user-app-config
+              key: DB_PASSWORD
