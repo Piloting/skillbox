@@ -13,6 +13,7 @@ variables:
 stages:
   - build
   - build_image
+  - install
 
 # Чтобы использовать результаты сборки на разных шагах, добавим кеш, иначе собрать артефакт с JAR-файлом, полученным на этапе build_app, нельзя:
 cache:
@@ -58,3 +59,16 @@ docker-build:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
+
+install_dev:
+  # Привязываем шаг к определённому этапу:
+  stage: build
+  tags:
+    - java
+  # Указываем образ, который будет использоваться для выполнения шага:
+  image: maven:3-openjdk-$JAVA_VERSION
+  # В разделе скрипта задаём команду, которую хотим выполнить:
+  script: 
+    - cd .charts/app/user-app
+    - helm lint .
+    - helm upgrade user-app . -f values-dev.yaml

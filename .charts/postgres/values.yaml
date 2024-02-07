@@ -1,0 +1,42 @@
+appName: postgres
+appHost: preprod.postgres.local
+namespace: &namespace preprod
+POSTGRES_DB: user-db
+POSTGRES_USER: postgres
+POSTGRES_PASSWORD: postgres
+PGDATA: /data/postgres
+
+apps:
+  backend:
+    appName: postgres
+    namespace: *namespace
+    replicasCount: 1
+    container:
+      image: postgres
+      version: 14
+      port: 5432
+      env:
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_PASSWORD
+        - name: PGDATA
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: PGDATA
+    service:
+      type: NodePort
+      port: 80
+      targetPort: 5432

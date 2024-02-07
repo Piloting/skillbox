@@ -1,6 +1,7 @@
 namespace: &namespace preprod
 appHost: user-app
-DB_URL: jdbc:postgresql://my_postgres_container:5432/postgres
+# postgres должен быть запущен в кубере, через helm -> .charts\postgres
+DB_URL: jdbc:postgresql://postgres-service.preprod:80/postgres
 DB_USER: postgres
 DB_PASSWORD: postgres
 
