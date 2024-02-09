@@ -1,3 +1,21 @@
+# Предварительно проект надо завести в gitLab.com, в нем завести ранер с локальной машины.
+# Установка ранера: 
+#   # Run PowerShell: https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/starting-windows-powershell?view=powershell-7#with-administrative-privileges-run-as-administrator
+#   # Create a folder somewhere on your system, for example: C:\GitLab-Runner
+#     New-Item -Path 'C:\GitLab-Runner' -ItemType Directory
+#     
+#     # Change to the folder
+#     cd 'C:\GitLab-Runner'
+#     
+#     # Download binary
+#     Invoke-WebRequest -Uri "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe" -OutFile "gitlab-runner.exe"
+#     
+#     # Register the runner (steps below), then run
+#     .\gitlab-runner.exe install
+#     .\gitlab-runner.exe start
+#  Command to register runner
+#  ./gitlab-runner.exe register --url https://gitlab.com/ --registration-token GR1348941LovGGEx4-4fnm9iPJt3b
+
 # Тут перечисляются глобальные переменные для пайплайна.
 # Их мы будем использовать дальше в файле.
 # Блок переменных имеет зарезервированное имя variables, которое не должно использоваться в качестве имени шага:
