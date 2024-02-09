@@ -15,7 +15,7 @@
 #     .\gitlab-runner.exe start
 #  Command to register runner
 #  ./gitlab-runner.exe register --url https://gitlab.com/ --registration-token GR1348941LovGGEx4-4fnm9iPJt3b
-# Запустить VPN, иначе ошибка на шаге "docker login"
+# Запустить VPN, иначе ошибка на шаге "docker login" (иногда впн мешает работе загрузок кнутри ранера)
 # В папке с ранером установить привелигированный режим иначе не будет доступа к докеру. Иначе ошибка на шаге "docker build": ERROR: Cannot connect to the Docker daemon at tcp://thedockerhost:2375/. Is the docker daemon running?
 
 # Тут перечисляются глобальные переменные для пайплайна.
@@ -23,7 +23,7 @@
 # Блок переменных имеет зарезервированное имя variables, которое не должно использоваться в качестве имени шага:
 variables:
   JAVA_VERSION: 17
-  APP_IMAGE: piloting1/skillbox # pilot_repo/user-app
+  APP_IMAGE: registry.gitlab.com/piloting1/skillbox # pilot_repo/user-app - эта штука должна совпадать с именем репо в гитЛабе
   # В переменных можно ссылаться на другие переменные, в том числе те, которые предоставляет GitLab.
   # Таких переменных довольно много, и можно, например, получить информацию о теге коммита:
   APP_TAG: 0.1.0-$CI_COMMIT_REF_NAME
