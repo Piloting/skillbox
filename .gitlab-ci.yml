@@ -65,7 +65,7 @@ docker-build:
   variables:
     DOCKER_HOST: tcp://thedockerhost:2375/
     DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
+    DOCKER_TLS_CERTDIR: "/certs"
   # Раздел services позволяет добавить к сборке ещё несколько образов.
   # Например, для docker in docker нам нужен образ с демоном. 
   # Другой пример: можно добавить БД для интеграционных тестов в отдельном образе.
