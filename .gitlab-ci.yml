@@ -16,7 +16,7 @@
 #  Command to register runner
 #  ./gitlab-runner.exe register --url https://gitlab.com/ --registration-token GR1348941LovGGEx4-4fnm9iPJt3b
 # Запустить VPN, иначе ошибка на шаге "docker login"
-# В папке с ранером установить привелигированный режим иначе не будет доступа к докеру. Иначе ошибка на шаге "docker build", что-то типа "чувак, докер запущен?"
+# В папке с ранером установить привелигированный режим иначе не будет доступа к докеру. Иначе ошибка на шаге "docker build": ERROR: Cannot connect to the Docker daemon at tcp://thedockerhost:2375/. Is the docker daemon running?
 
 # Тут перечисляются глобальные переменные для пайплайна.
 # Их мы будем использовать дальше в файле.
@@ -65,7 +65,7 @@ docker-build:
   variables:
     DOCKER_HOST: tcp://thedockerhost:2375/
     DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_CERTDIR: ""
   # Раздел services позволяет добавить к сборке ещё несколько образов.
   # Например, для docker in docker нам нужен образ с демоном. 
   # Другой пример: можно добавить БД для интеграционных тестов в отдельном образе.
