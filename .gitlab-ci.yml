@@ -15,6 +15,8 @@
 #     .\gitlab-runner.exe start
 #  Command to register runner
 #  ./gitlab-runner.exe register --url https://gitlab.com/ --registration-token GR1348941LovGGEx4-4fnm9iPJt3b
+# Запустить VPN, иначе ошибка на шаге "docker login"
+# В папке с ранером установить привелигированный режим иначе не будет доступа к докеру. Иначе ошибка на шаге "docker build", что-то типа "чувак, докер запущен?"
 
 # Тут перечисляются глобальные переменные для пайплайна.
 # Их мы будем использовать дальше в файле.
@@ -74,11 +76,13 @@ docker-build:
   # Это позволяет хранить чувствительные данные отдельно от кода, причём благодаря ролевой модели GitLab.
   # Доступ к ним можно оставить только администратору или владельцу проекта, что повышает безопасность:
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker login -u suntsovto -p myDockerPass "$CI_REGISTRY"
+    #- docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   # Если скрипт состоит более чем из одной команды, то удобно использовать list-форму.
   # В этой форме каждая команда записывается в отдельный элемент списка, что повышает читаемость файла:
   script:
     - docker info
+    - ls
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
 
