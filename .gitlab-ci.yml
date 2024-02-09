@@ -23,7 +23,7 @@
 # Блок переменных имеет зарезервированное имя variables, которое не должно использоваться в качестве имени шага:
 variables:
   JAVA_VERSION: 17
-  APP_IMAGE: Piloting1/skillbox # pilot_repo/user-app
+  APP_IMAGE: piloting1/skillbox # pilot_repo/user-app
   # В переменных можно ссылаться на другие переменные, в том числе те, которые предоставляет GitLab.
   # Таких переменных довольно много, и можно, например, получить информацию о теге коммита:
   APP_TAG: 0.1.0-$CI_COMMIT_REF_NAME
