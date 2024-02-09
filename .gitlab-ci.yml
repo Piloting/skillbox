@@ -86,6 +86,9 @@ docker-build:
   script:
     - docker info
     - ls
+    - echo "$CI_REGISTRY_USER"
+    - echo "$CI_REGISTRY_PASSWORD"
+    - echo "$CI_REGISTRY"
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
 
