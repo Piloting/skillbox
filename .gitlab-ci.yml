@@ -76,8 +76,8 @@ docker-build:
   # Это позволяет хранить чувствительные данные отдельно от кода, причём благодаря ролевой модели GitLab.
   # Доступ к ним можно оставить только администратору или владельцу проекта, что повышает безопасность:
   before_script:
-    - docker login -u suntsovto -p myDockerPass "$CI_REGISTRY"
-    #- docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    #- docker login -u suntsovto -p myDockerPass "$CI_REGISTRY"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   # Если скрипт состоит более чем из одной команды, то удобно использовать list-форму.
   # В этой форме каждая команда записывается в отдельный элемент списка, что повышает читаемость файла:
   script:
