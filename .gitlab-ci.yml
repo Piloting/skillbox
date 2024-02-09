@@ -51,6 +51,9 @@ build_app:
   image: maven:3-openjdk-$JAVA_VERSION
   # В разделе скрипта задаём команду, которую хотим выполнить:
   script: "mvn -B install --file pom.xml"
+  artifacts: 
+    paths:
+      - target
 
 docker-build:
   stage: build_image
