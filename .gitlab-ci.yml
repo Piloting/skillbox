@@ -98,7 +98,9 @@ install_dev:
   tags:
     - java
   # Указываем образ, который будет использоваться для выполнения шага:
-  image: maven:3-openjdk-$JAVA_VERSION
+  image:
+    name: alpine/helm
+    entrypoint: [""]
   # В разделе скрипта задаём команду, которую хотим выполнить:
   script: 
     - cd .charts/app/user-app
