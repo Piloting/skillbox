@@ -15,7 +15,7 @@
 #     .\gitlab-runner.exe start
 #  Command to register runner
 #  ./gitlab-runner.exe register --url https://gitlab.com/ --registration-token GR1348941LovGGEx4-4fnm9iPJt3b
-# Запустить VPN, иначе ошибка на шаге "docker login" (иногда впн мешает работе загрузок кнутри ранера)
+# Запустить VPN, иначе ошибка на шаге "docker login" (иногда впн мешает работе загрузок внутри ранера)
 # В папке с ранером установить привелигированный режим иначе не будет доступа к докеру. Иначе ошибка на шаге "docker build": ERROR: Cannot connect to the Docker daemon at tcp://thedockerhost:2375/. Is the docker daemon running?
 
 # Тут перечисляются глобальные переменные для пайплайна.
@@ -31,8 +31,8 @@ variables:
 # Здесь перечислены этапы сборки в нужном порядке.
 # Называть этапы можно как угодно:
 stages:
-  - build
-  - build_image
+  #- build
+  #- build_image
   - install
 
 # Чтобы использовать результаты сборки на разных шагах, добавим кеш, иначе собрать артефакт с JAR-файлом, полученным на этапе build_app, нельзя:
@@ -84,11 +84,11 @@ docker-build:
   # Если скрипт состоит более чем из одной команды, то удобно использовать list-форму.
   # В этой форме каждая команда записывается в отдельный элемент списка, что повышает читаемость файла:
   script:
-    - docker info
-    - ls
-    - echo "$CI_REGISTRY_USER"
-    - echo "$CI_REGISTRY_PASSWORD"
-    - echo "$CI_REGISTRY"
+    # - docker info
+    # - ls
+    # - echo "$CI_REGISTRY_USER"
+    # - echo "$CI_REGISTRY_PASSWORD"
+    # - echo "$CI_REGISTRY"
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
 
@@ -105,4 +105,5 @@ install_dev:
   script: 
     - cd .charts/app/user-app
     - helm lint .
+    - kubectl cluster-info
     - helm upgrade user-app . -f values-dev.yaml
