@@ -42,7 +42,7 @@ cache:
     - target/
 
 # Далее описываем шаги сборки. Называть их можно практически как угодно, нельзя лишь использовать зарезервированные имена:
-.build_app:
+build_app:
   # Привязываем шаг к определённому этапу:
   stage: build
   tags:
@@ -55,7 +55,7 @@ cache:
     paths:
       - target
 
-.docker-build:
+docker-build:
   stage: build_image
   tags:
     - java
@@ -84,15 +84,14 @@ cache:
   # Если скрипт состоит более чем из одной команды, то удобно использовать list-форму.
   # В этой форме каждая команда записывается в отдельный элемент списка, что повышает читаемость файла:
   script:
-    # - docker info
-    # - ls
-    # - echo "$CI_REGISTRY_USER"
-    # - echo "$CI_REGISTRY_PASSWORD"
-    # - echo "$CI_REGISTRY"
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
+    - docker info
+    - cd .charts/app/user-app
+    - helm lint .
+    - kubectl cluster-info
 
-install_dev:
+.install_dev:
   # Привязываем шаг к определённому этапу:
   stage: install
   tags:
