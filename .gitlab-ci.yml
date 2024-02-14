@@ -99,9 +99,7 @@ install_dev:
   script: 
     - kubectl config get-contexts
     - kubectl config use-context Piloting1/skillbox:k8s-agent
-    - kubectl get pods
-    - ls
+    #- kubectl get pods
     - cd .charts/app/user-app
     - helm lint .
-    - kubectl cluster-info
     - helm upgrade user-app . -f values-dev.yaml
