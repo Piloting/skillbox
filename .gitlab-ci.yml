@@ -93,7 +93,7 @@ install_dev:
     - java
   # Указываем образ, который будет использоваться для выполнения шага:
   image:
-    name: bitnami/kubectl:latest
+    name: alpine/helm #bitnami/kubectl:latest
     entrypoint: [""]
   # В разделе скрипта задаём команду, которую хотим выполнить:
   script: 
