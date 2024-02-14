@@ -90,17 +90,21 @@ docker-build:
     - helm lint .
     - kubectl cluster-info
 
-.install_dev:
+install_dev:
   # Привязываем шаг к определённому этапу:
   stage: install
   tags:
     - java
   # Указываем образ, который будет использоваться для выполнения шага:
   image:
-    name: alpine/helm
+    name: bitnami/kubectl:latest
     entrypoint: [""]
   # В разделе скрипта задаём команду, которую хотим выполнить:
   script: 
+    - kubectl config get-contexts
+    - kubectl config use-context Piloting1/skillbox:k8s-agent
+    - kubectl get pods
+    - ls
     - cd .charts/app/user-app
     - helm lint .
     - kubectl cluster-info
