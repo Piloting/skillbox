@@ -93,13 +93,12 @@ install_dev:
     - java
   # Указываем образ, который будет использоваться для выполнения шага:
   image:
-    name: lwolf/helm-kubectl-docker #bitnami/kubectl:latest alpine/helm
+    name: lwolf/helm-kubectl-docker
     entrypoint: [""]
   # В разделе скрипта задаём команду, которую хотим выполнить:
   script: 
     - kubectl config get-contexts
     - kubectl config use-context Piloting1/skillbox:k8s-agent
-    #- kubectl get pods
     - cd .charts/app/user-app
     - helm lint .
-    - helm upgrade user-app . -f values-dev.yaml
+    - helm install user-app-dev . -f values-dev.yaml
