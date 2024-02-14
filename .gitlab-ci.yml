@@ -85,10 +85,6 @@ docker-build:
   script:
     - docker image build -t $APP_IMAGE:$APP_TAG -f docker/Dockerfile .
     - docker push $APP_IMAGE:$APP_TAG
-    - docker info
-    - cd .charts/app/user-app
-    - helm lint .
-    - kubectl cluster-info
 
 install_dev:
   # Привязываем шаг к определённому этапу:
